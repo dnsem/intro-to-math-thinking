@@ -1,0 +1,51 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+   Say whether the following is true or false and support your answer by a proof.
+   \begin{equation*}
+      \left( \exists m \in \mathbb{N} \right) \left( \exists n \in \mathbb{N} \right) \left( 3m + 5n = 12 \right)
+   \end{equation*}
+   \paragraph{Solution}\mbox{} \\
+   Let's claim that $\left( \exists m \in \mathbb{N} \right) \left( \exists n \in \mathbb{N} \right) \left( 3m + 5n = 12 \right)$ is false and prove it.
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\left( \forall m \in \mathbb{N} \right) \left( \forall n \in \mathbb{N} \right) \left( 3m + 5n \neq 12 \right)$
+   \end{Theorem}
+   \begin{proof}
+   Since $12$ is even number, then either both $3m$ and $5n$ are even, or both are odd.
+   $3m$ is even only if $m$ is even, similarly $5n$ is even only if $n$ is even.
+   So, either both $m$ and $n$ are event, or both are odd. \\
+   In case both $m$    and $n$ are event, here are the possibilities:
+   \begin{align*}
+      3 \cdot 2 + 5 \cdot 2 = 16
+   \end{align*}
+   Obviously, all other combinations of even $m$ and $n$ will yield even bigger numbers. \\
+   In case both $n$    and $m$ are odd, here are the possibilities:
+   \begin{align*}
+      3 \cdot 1 + 5 \cdot 1 &= 8 \\
+      3 \cdot 1 + 5 \cdot 3 &= 18 \\
+      3 \cdot 3 + 5 \cdot 1 &= 14
+   \end{align*}
+   Obviously, all other combinations of odd $m$ and $n$ will yield even bigger numbers. \\
+   Thus we tried all combinations of $m$ and $n$, and neither of them yielded $3m + 5n = 12$.
+   Hence, $\left( \forall m \in \mathbb{N} \right) \left( \forall n \in \mathbb{N} \right) \left( 3m + 5n \neq 12 \right)$.
+   \end{proof}
+
+
+\end{document}

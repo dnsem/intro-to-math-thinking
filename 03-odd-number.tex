@@ -1,0 +1,47 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+      Say whether the following is true or false and support your answer by a proof: For any integer $n$, the number $n^{2} + n + 1$ os odd.
+   \paragraph{Solution}\mbox{} \\
+   Task is equavalent to proving/disproving the following theorem:
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\forall n \in \mathbb{Z}, n \geq 0: \left(2 \nmid \left( n^{2} + n + 1 \right)\right) \land \left(2 \nmid \left( (-n)^{2} + (-n) + 1 \right)\right)$.
+   \end{Theorem}
+   \begin{proof}
+   By induction. \\
+   \emph{Initial step (n = 0)}: $\left(2 \nmid \left( 0^{2} + 0 + 1 \right)\right) \land \left(2 \nmid \left( (-0)^{2} + (-0) + 1 \right)\right)$ \\
+   $= \left(2 \nmid 1\right) \land \left(2 \nmid \left( 1 \right)\right)$ - this is true. \\
+   \emph{Induction step}: Assume $\left(2 \nmid \left( n^{2} + n + 1 \right)\right) \land \left(2 \nmid \left( (-n)^{2} + (-n) + 1 \right)\right)$.\\
+   Then for $n + 1$:\\
+   $\left(2 \nmid \left( (n + 1)^{2} + (n + 1) + 1 \right)\right) \land \left(2 \nmid \left( (-(n + 1))^{2} + (-(n + 1)) + 1 \right)\right)$ \\
+   $= \left(2 \nmid \left(\left(n^{2} + n + 1\right) + 2\left(n + 1\right)\right)\right) \land \left(2 \nmid \left(n^{2} + n + 1\right)\right)$ \\
+   $= 2 \nmid \left(\left(n^{2} + n + 1\right) + 2\left(n + 1\right)\right)$ (by induction hypothesis $2 \nmid \left( n^{2} + n + 1 \right)$).\\
+   Since, by induction hypothesis, $2 \nmid \left( n^{2} + n + 1 \right)$, then $n^{2} + n + 1 = 2k + 1$ for some $k \in \mathbb{Z}$. \\
+   Then we have $2 \nmid \left(\left(n^{2} + n + 1\right) + 2\left(n + 1\right)\right)$ \\
+   $= 2 \nmid \left(2k + 1 + 2\left(n + 1\right)\right)$ \\
+   $= 2 \nmid \left(2\left(k + n + 1\right) + 1\right)$  \\
+   (define $l = k + n + 1 \in Z$) \\
+   $= 2 \nmid \left(2l + 1\right)$, where $l = k + n + 1 \in Z$ - this is clearly true. \\
+   Hence, by principle of induction, \\
+   $\forall n \in \mathbb{Z}, n \geq 0: \left(2 \nmid \left( n^{2} + n + 1 \right)\right) \land \left(2 \nmid \left( (-n)^{2} + (-n) + 1 \right)\right)$, \\
+   which constitutes the proof of original claim.
+   \end{proof}
+
+\end{document}

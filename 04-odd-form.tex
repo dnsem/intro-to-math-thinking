@@ -1,0 +1,36 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+      Prove that every odd natural number is of one of the forms $4n + 1$ or $4n + 3$, where $n$ is an integer.
+   \paragraph{Solution}\mbox{} \\
+   Task is equavalent to proving the following theorem:
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\displaystyle \forall m \in \mathbb{N}: 2 \mid m \Rightarrow \exists n \in \mathbb{Z} \left[ m = 4n + 1 \lor m = 4n + 3\right]$.
+   \end{Theorem}
+   \begin{proof}
+   Let's take arbitrary $m \in \mathbb{N}$.
+   By division theorem, $m \in \mathbb{N}$ can be expressed in one of these forms: $m = 4n, m = 4m + 1, m = 4n + 2, m = 4m + 3$, for some $n \in \mathbb{Z}$. \\
+   Of these forms, two express even numbers, $4n = 2 \cdot 2n$ and $4n + 2 = 2(2n + 1)$, since both are divisible by 2.\\
+   Two remaining forms, $4n + 1$ and $4n + 3$, are not divisible by $2$, so they are odd.
+   Since our choice of $m$ was arbitrary, this implies that if $m$ is odd, it can be expressed in one of the forms $4n + 1$ or $4n + 3$, for some $n \in \mathbb{Z}$.\\
+   This concludes the proof.
+   \end{proof}
+
+\end{document}

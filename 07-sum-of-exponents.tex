@@ -1,0 +1,47 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+   Prove that for any natural number n,
+   \begin{equation*}
+      2 + 2^{2} + 2^{3} + 2^{4} + \mathellipsis + 2^{n} = 2^{n+1} - 2
+   \end{equation*}
+   \paragraph{Solution}\mbox{} \\
+   Task is equavalent to proving the following theorem:
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\displaystyle \forall n \in \mathbb{N}: \sum_{i=1}^{n}2^{n} = 2^{n+1} - 2$
+   \end{Theorem}
+   \begin{proof}
+   By induction. \\
+   \emph{Initial step (n = 1):} $\displaystyle \sum_{i=1}^{1}2^{1} = 2^{1+1} - 2$\\
+   $\Rightarrow$ $2 = 4 - 2$ (by algebra)\\
+   $\Rightarrow$ $2 = 2$, so equality holds.\\
+   \emph{Induction step:} \\
+   Assume $\displaystyle \sum_{i=1}^{n}2^{n} = 2^{n+1} - 2$. \\
+   Then for $n + 1$: \\
+   $\displaystyle \sum_{i=1}^{n + 1}2^{n + 1} = \sum_{i=1}^{n}2^{n} + 2^{n + 1}$ (pulling out last member)  \\
+   $= 2^{n + 1} - 2 + 2^{n + 1}$ (by induction hypothesis)  \\
+   $= 2\cdot2^{n + 1} - 2$ \\
+   $= 2^{n + 2} - 2$. \\
+   Thus $\displaystyle \sum_{i=1}^{n + 1}2^{n + 1} = 2^{n+2} - 2$, which is induction hypothesis for $n + 1$. \\
+   Hence, by principle of induction,
+   $\displaystyle \forall n \in \mathbb{N}: \sum_{i=1}^{n}2^{n} = 2^{n+1} - 2$
+   \end{proof}
+
+\end{document}

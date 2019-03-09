@@ -1,0 +1,150 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+   Prove that the only prime triple (i.e. three primes, each 2 from the next) is $3, 5, 7$.
+   \paragraph{Solution}\mbox{} \\
+   First, observe that $(1, 3, 5)$ is non-prime since 1 is non-prime.
+   Second, observe that, if a triple contains even number, then it is not prime.
+   So let's consider only triples that contain only odd numbers, starting from triple $(3, 5, 7)$ and give them formal definition:
+
+   \newtheorem*{Definition1}{Definition 1}
+   \begin{Definition1}
+      A \textbf{triple}, denoted $T_{n}$, is three odd numbers, each 2 from the next, i.e. $T_{n} =(2n + 1, n + 3, 2n + 5)$, for any $n \in \mathbb{N}$.
+   \end{Definition1}
+
+   \newtheorem*{Definition2}{Definition 2}
+   \begin{Definition2}
+      A \textbf{non-prime triple} is a triple that has at least one non-prime element.
+   \end{Definition2}
+
+   Here are some examples of triples:
+   $T_{1} = (3, 5, 7), T_{2} = (5, 7, 9), T_{3} = (7, 9, 11), T_{4} = (9, 11, 13), T_{5} = (11, 13, 15)$ and so on.\\
+   Notice how $i-th$ element moves from position 3 to 2 to 1 in 3 consecutive triples:
+   \begin{align*}
+   T_{n} &= (2n + 1, 2n + 3, 2n + 5) \\
+   T_{n + 1} &= (2n + 3, 2n + 5, 2n + 7) \\
+   T_{n + 2} &= (2n + 5, 2n + 7, 2n + 9) \\
+   \end{align*}
+   If $2n + 5$ is non-prime, then both $T_{n}$ and $T_{n + 1}$ and $T_{n + 2}$ are non-prime, since $2n + 5$ is present in all these triples.
+
+   \newtheorem*{Definition3}{Definition 3}
+   \begin{Definition3}
+      Triples $T_{i}$ and $T_{j}$ \textbf{intersect} if they share at least one common element for all $i, j \in \mathbb{N}$.
+   \end{Definition3}
+   So whenever $T_{i}$ and $T_{j}$ intersect, they are equivalent with respect to being non-prime (if one is non-prime then another is also non-prime).
+   Thus we can consider only \emph{non-intersecting} triples, i.e. triples that have no common elements.\\
+   We can see that next nearest triple to $T_{n}$  that does not interesect with it is $T_{n + 3}$, since $T_{n + 3} = (2n + 7, 2n + 9, 2n + 11)$, and it doesn't have common elements with $T_{n}$.\\
+   So the sequence of triples that do not intersect with each other is of this form:\\
+   \begin{equation*}
+   [T_{n}, T_{n + 3}, T_{n + 6}, ...]
+   \end{equation*}
+   , i.e.  all triples of the form $T_{n + 3k}$ for all $n, k \in \mathbb{Z}, n > 0, k \geq 0$.\\
+   We are only interested in such triples that start from (5, 7, 9), so let's give them a formal definition:
+   \newtheorem*{Definition4}{Definition 4}
+   \begin{Definition4}
+   A \textbf{non-intersecting triple} is a triple $\uptau_{k} = T_{2 + 3k}$ for all $k \geq 0$.
+   \end{Definition4}
+   Examples of non-intersecting triples:
+   \begin{align*}
+   \uptau_{0} &= T_{2 + 3\cdot0} = T_{2} = (5, 7, 9)\\
+   \uptau_{1} &= T_{2 + 3\cdot1} = T_{5} = (11, 13, 15)\\
+   \uptau_{2} &= T_{2 + 3\cdot2} = T_{8} = (17, 19, 21)\\
+   \end{align*}
+   To prove the original statement we need to prove that all non-intersecting triples of the form $\uptau_{k} = T_{2 + 3k}$ for all $k \geq 0$ are non-primes.\\
+   But first we need to prove several additional statements.
+
+   \newtheorem*{Definition5}{Definition 5}
+   \begin{Definition5}
+       $\uptau_{k}^{i}$ is $i$-th element of non-intersecting triple $\uptau_{k}$
+   \end{Definition5}
+   \newtheorem*{Lemma1}{Lemma 1}
+   \begin{Lemma1}
+       $\uptau_{k}^{3}$ is divisible by 3 for all $k \geq 0$.
+   \end{Lemma1}
+   \begin{proof}
+   By induction:\\
+   \emph{Initial step} ($k = 0$): $\uptau_{0}^{3} = \left(T_{2+3\cdot0}\right)^{3} = \left(T_{2}\right)^{3} = \left(5, 7, 9\right)^{3} = 9$ is divisible by 3.\\
+   \emph{Induction step}: Assume $\uptau_{k}^{3}$ is divisible by 3, thus it can be expressed in a form $\uptau_{k}^{3} = 3n$, for some $n \in \mathbb{N}$.\\
+   $\uptau_{k}^{3} = (T_{3k + 2})^{3}$ (by definition of $\uptau_{k}$)\\
+   $= (2(3k + 2) + 1, 2(3k + 2) + 3, 2(3k + 5) + 5)^{3}$ (by definition of $T_{n}$)\\
+   $= (6k + 5, 6k + 7, 6k + 9)^{3}$ (by algebra)\\
+   $= 6k + 9$ (by definition of $\uptau_{k}^{i}$)\\
+   $\uptau_{k + 1}^{3} = (T_{3(k + 1) + 2})^{3}$ (by definition of $\uptau_{k}$)\\
+   $= (T_{3k + 5})^{3}$ (by algebra)\\
+   $= (2(3k + 5) + 1, 2(3k + 5) + 3, 2(3k + 3) + 5)^{3}$ (By definitionof $T_{n}$)\\
+   $= (6k + 11, 6k + 13, 6k + 15)^{3}$ (By algebra)\\
+   $= 6k + 15$ (By definition of $\uptau_{k}^{i}$)\\
+   Hence, $\uptau_{k + 1}^{3} = \uptau_{k}^{3} + 6$\\
+   $= 3n + 6$ (by induction hypothesis)\\
+   $= 3(n + 2)$ - this is divisible by 3.\\
+   Thus, by principle of mathematical induction, $\uptau_{k}^{3}$ is divisible by 3 for all $k \in \mathbb{Z}, k \geq 0$.
+   \end{proof}
+
+   \newtheorem*{Lemma2}{Lemma 2}
+   \begin{Lemma2}
+       $\uptau_{k}$ is non-prime for all $k \geq 0$.
+   \end{Lemma2}
+
+   \begin{proof}
+   By Lemma 1, $\uptau_{k}^{3}$ is divisible by 3 for all $k \geq 0$. This implies that $\uptau_{k}^{3}$ is non-prime for all $k \geq 0$ (by definition of prime number).\\
+   But then it implies that $\uptau_{k}$ is non-prime for all $k \geq 0$ (since $\uptau_{k}$ contains $\uptau_{k}^{3}$ for all $k$).\\
+   Thus, we proved that all non-intersecting triples are non-prime.
+   \end{proof}
+
+   \newtheorem*{Lemma3}{Lemma 3}
+   \begin{Lemma3}
+       For all $n \geq 2$ there exists $k \geq 0$ such that $T_{n}$ and $\uptau_{k}$ have common element.
+       In other words, for each triple starting from $(5, 7, 9)$ there exists a non-intersecting triple that it shares element with.
+   \end{Lemma3}
+   \begin{proof}
+   Take arbitrary $T_{n} = (2n + 1, 2n + 3, 2n + 5)$ (by definition of $T_{n}$).\\
+   We need to find $k$ such that $n = 2 + 3k$, i.e. $3k = n - 2$.\\
+   By division theorem, $n$ can be expressed in one of these forms: $3m, 3m + 1, 3m + 2$ for some $m \geq 1$.\\
+   \emph{Case $n = 3m$:} $T_{n} = T_{3m} = (6m + 1, 6m + 3, 6m + 5)$\\
+   \emph{Case $n = 3m + 1$:} $T_{n} = T_{3m + 1} = (6m + 3, 6m + 5, 6m + 7)$\\
+   \emph{Case $n = 3m + 2$:} $T_{n} = T_{3m + 2} = (6m + 5, 6m + 7, 6m + 9)$\\
+   In each of three cases, take $k = m$.\\
+   Then $\uptau(m) = T_{3m + 2} = (6m + 5, 6m + 7, 6m + 9)$\\
+   We can observe that $6m + 5$ is shared by $\uptau_{m}$ and $T_{n}$ for each of three cases.\\
+   Since we have exhausted all cases, we proved that for all $n \geq 2$ there exists $k \geq 0$ such that $T_{n}$ and $\uptau_{k}$ have common element.
+   \end{proof}
+
+   \newtheorem*{Lemma4}{Lemma 4}
+   \begin{Lemma4}
+   All triples $T_{n}$ where $n \in \mathbb{N}, n \geq 2$ are non-prime.
+   \end{Lemma4}
+   \begin{proof}
+   By Lemma 2 all non-intersecting triples are non-prime, and by Lemma 3 any other triple $T_{n}$ where $n \geq 2$ shares at least one common element with some non-intersecting triple.\\
+   Thus all triples $T_{n}$ where $n \geq 2$ are non-prime.\\
+   \end{proof}
+
+   Now we are in a position to prove the original proposition:
+   \newtheorem*{Theorem}{Original proposition}
+   \begin{Theorem}
+      For all $n \in \mathbb{N}$ among  all triples of the form $(n, n + 2, n + 4)$ there exists only one prime triple, namely, $(3, 5, 7)$.
+   \end{Theorem}
+   \begin{proof}
+      Since even numbers are not prime, all triples of the form $(2n, 2n + 2, 2n + 4), n \in \mathbb{N}$, are non-prime.
+      By Lemma 4, all triples of the form $(2n + 1, 2n + 3, 2n + 5), n \in \mathbb{N}, n \geq 2$, are non-prime.
+      Hence we are left with two triples: $(1, 3, 5)$ and $(3, 5, 7)$. Triple $(1, 3, 5)$ is non-prime since 1 is non-prime. \\
+      Hence, the only prime triple is $(3, 5, 7)$ .
+      This consitutes the proof of the original proposition.
+   \end{proof}
+
+\end{document}

@@ -1,0 +1,36 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+      Prove that for any integer $n$, at least one of the integers $n, n + 2, n + 4$ is divisible by $3$.
+   \paragraph{Solution}\mbox{} \\
+   Task is equavalent to proving the following theorem:
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\displaystyle \forall n \in \mathbb{N}: 3 \mid n \lor 3 \mid (n + 2) \lor 3 \mid (n + 4)$
+   \end{Theorem}
+   \begin{proof}
+   By cases. \\
+   By division theorem, all integers can be expressed in one of these forms: $3k, 3k + 1, 3k + 2$, for some $k \in \mathbb{Z}$. \\
+   In case $n = 3k$, for some $k$, it is divisible by 3 (by definition of divisibility). \\
+   In case $n = 3k + 1$, for some $k$, then $n + 2 = 3k + 3 = 3(k + 1)$ is divisible by 3 (by definition of divisibility). \\
+   In case $n = 3k + 2$, for some $k$, then $n + 4 = 3k + 6 = 3(k + 2)$ is divisible by 3 (by definition of divisibility). \\
+   Hence, we proved that for any integer $n$, at least one of the integers $n, n + 2, n + 4$ is divisible by $3$.
+   \end{proof}
+
+\end{document}

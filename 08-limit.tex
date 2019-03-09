@@ -1,0 +1,43 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+      Prove (from the definition of a limit of a sequence) that if the sequence $\left\{a_{n}\right\}_{n=1}^{\infty}$ tends to limit $L$ as $n \rightarrow \infty$,
+      then for any fixed number $M > 0$,  the sequence $\left\{Ma_{n}\right\}_{n=1}^{\infty}$ tends to the limit $ML$.
+   \paragraph{Solution}\mbox{} \\
+   Task is equavalent to proving the following theorem:
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       $\displaystyle \forall M \in \mathbb{R}, M > 0: \lim_{n \to \infty} \left\{a_{n}\right\}_{n=1}^{\infty} = L  \Rightarrow \lim_{n \to \infty} \left\{Ma_{n}\right\}_{n=1}^{\infty} = ML$.
+   \end{Theorem}
+   \begin{proof}
+   Let's take arbitrary $M \in \mathbb{R}, M > 0$. By definition of limit,\\
+   $\left(\forall \epsilon \in \mathbb{R}, \epsilon > 0 \right) \left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|a_{n} - L\right| < \epsilon \right]$.\\
+   Let's take arbitrary $\delta \in \mathbb{R}, \delta > 0$ and take $\epsilon = \frac{\delta}{M}$.
+   Then, for this $\epsilon$, \\
+   $\left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|a_{n} - L\right| < \epsilon \right]$ \\
+   $\Rightarrow$ $\left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[M \left|a_{n} - L\right| < M\epsilon \right]$ (multiplying by $M > 0$)\\
+   $\Rightarrow$ $\left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|Ma_{n} - ML\right| < M\epsilon \right]$ \\
+   $\Rightarrow$ $\left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|Ma_{n} - ML\right| < M\left(\frac{\delta}{M}\right) \right]$ (by definition of $\epsilon$)\\
+   $\Rightarrow$ $\left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|Ma_{n} - ML\right| < \delta \right]$. \\
+   Since $\delta$ was taken arbitrarily, $\left(\forall \delta \in \mathbb{R}, \delta > 0 \right) \left(\exists n \in \mathbb{N}\right) \left(\forall m > n \right)\left[ \left|Ma_{n} - ML\right| < \delta \right].$
+   But this is precisely definition of $\displaystyle \lim_{n \to \infty} \left\{Ma_{n} \right\}_{n=1}^{\infty} = ML$.\\
+   Hence, $\displaystyle \forall M \in \mathbb{R}, M > 0: \lim_{n \to \infty} \left\{a_{n}\right\}_{n=1}^{\infty} = L  \Rightarrow \lim_{n \to \infty} \left\{Ma_{n}\right\}_{n=1}^{\infty} = ML$.\\
+   \end{proof}
+
+\end{document}

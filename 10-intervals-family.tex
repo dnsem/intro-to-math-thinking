@@ -1,0 +1,49 @@
+%%
+%% Author: semenovd
+%% 27/02/2019
+%%
+
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Document
+\begin{document}
+
+   \pagenumbering{gobble}
+   \paragraph{Task}\mbox{} \\
+       Give an example of a family of intervals $A_{n}, n = 1,2,\mathellipsis$, such that $A_{n+1} \subset A_{n}$ for all n and
+       $\displaystyle\bigcap_{n = 1}^{\infty}A_{n} = \{x|(\forall n)(x \in A_{n})\}$ consists of a single real number.
+       Prove that your example has the stated property.
+   \paragraph{Solution}\mbox{} \\
+       Let's take $A_{n} = [0, \frac{1}{n})$
+
+   \newtheorem*{Theorem}{Theorem}
+   \begin{Theorem}
+       Given a family of intervals $A_{n} = [0, \frac{1}{n}), n \in \mathbb{N}$, for all $n \in \mathbb{N}$ $A_{n+1} \subset A_{n}$  and
+       $\displaystyle\bigcap_{n = 1}^{\infty}A_{n}$ contains a single real number.
+   \end{Theorem}
+   \begin{proof}
+   First let's prove that for all $n \in \mathbb{N}$ $A_{n+1} \subset A_{n}$:\\
+   Clearly, $\forall n \in \mathbb{N}: \frac{1}{n+1} < \frac{1}{n}$ and hence $\forall n \in \mathbb{N}: [0, \frac{1}{n+1}) \subset [0, \frac{1}{n})$.\\
+   Now let's prove that $\displaystyle\bigcap_{n = 1}^{\infty}A_{n} = \{x|(\forall n)(x \in A_{n})\}$ consists of a single real number.\\
+   Clearly, $0 \in \displaystyle\bigcap_{n = 1}^{\infty}[0, \frac{1}{n})$ for all $n \in \mathbb{N}$.
+   We will prove that $\forall p \in \mathbb{R} \left[ p \in \displaystyle\bigcap_{n = 1}^{\infty}A_{n} \implies p = 0 \right]$, where $p$  is meant to be arbitrarily small number.\\
+   Assume, on the contrary, $\exists p \in \mathbb{R} \left[ \left(p \in \displaystyle\bigcap_{n = 1}^{\infty}A_{n} \right) \land (p \neq 0 )\right]$.\\
+   We will show that there is an interval $A_{m} = [0, \frac{1}{m})$, for some $m \in \mathbb{N}$, such that $p \notin A_{m}$.\\
+   Let's take $m$ such that $\frac{1}{m} < p$, i.e. $m > \frac{1}{p}$. We can always find such $m$ by Archimedean property of real numbers.
+   Then $p$ is upper bound of $A_{m}$.
+   Since $lub(A_{m}) = \frac{1}{m}$ and $\frac{1}{m} < p$ then $p \notin A_{m}$ (by definition of least upper bound). \\
+   Hence, $\exists m \in \mathbb{N}: p \notin A_{m}$.
+   But then it means that $p \notin \left( A_{m} \cap \displaystyle\bigcap_{n = 1, n \neq m}^{\infty}A_{n} \right)$ (by definition of intersection),
+   which is the same as $p \notin \displaystyle\bigcap_{n = 1}^{\infty}A_{n}$.
+   But it contradicts our assumption that $\exists p \in \mathbb{R} \left[ \left(p \in \displaystyle\bigcap_{n = 1}^{\infty}A_{n} \right) \land (p \neq 0 )\right]$.\\
+   Hence, $\displaystyle\bigcap_{n = 1}^{\infty}A_{n}$  consists of a single real number 0.
+   \end{proof}
+
+\end{document}
